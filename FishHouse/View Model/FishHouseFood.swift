@@ -233,121 +233,29 @@ class FishHouseFood: ObservableObject {
                }
                
            }
+
            
        }
         
     }
-    
-    func totalPoundsNeeded(fish: String) -> Int {
-        //Returns total number of pounds needed
-        
-        var totalPoundsNeeded: Int = 0
-        
-        switch fish {
-        
-        //Returns total amount of PAC Herring needed
-        case "pac":
-            for request in requests {
-                if request.name.contains("pac") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
-        
-            //Returns total amount of ATL herring
-        case "atl":
-            for request in requests {
-                if request.name.contains("atl") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
-            
-        case "large":
-            for request in requests {
-                if request.name.contains("large") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
-        
-            //Returns total amount of capelin
-        case "capelin":
-            for request in requests {
-                if request.name.contains("capelin") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
-        
-            //Returns total amount of mackerel
-        case "mack":
-            for request in requests {
-                if request.name.contains("mack") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
-            
-        case "sards":
-            for request in requests {
-                if request.name.contains("sards") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
-            
-        case "big":
-            for request in requests {
-                if request.name.contains("big") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
-            
-        case "little":
-            for request in requests {
-                if request.name.contains("little") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
-            
-        case "salmon":
-            for request in requests {
-                if request.name.contains("salmon") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
-            
-        case "shrimp":
-            for request in requests {
-                if request.name.contains("shrimp") {
-                    totalPoundsNeeded += request.amount
-                }
-            }
-            
-            return totalPoundsNeeded
 
-        
-        default:
-            print("Could not find \(fish)")
-            return totalPoundsNeeded
-            
+    func totalPoundsNeededFor(food: Food) -> Int {
+        //Returns total number of pounds needed
+        var totalPoundsNeeded: Int = 0
+        // Scan array of foods
+        for food in foods {
+            //Find food specified in function argument
+            if food.id == food.id
+            {
+            //Return the totalPoundsNeeded + the requests for all of the food
+                totalPoundsNeeded = totalPoundsNeeded + food.aquariums + food.rescue + food.whale + food.point + food.wild + food.otter + food.pinn + food.show
+            }
         }
+        
+        return totalPoundsNeeded
     }
     
-    func totalPoundsBrokeout(fish: String, boxWeight: Int, addOn: Bool) -> Int {
+    func totalPoundsBrokeout(fish: Food, boxWeight: Int, addOn: Bool) -> Int {
         
         // Get total pounds needed, will use this reference to determine how much needs to be brokeout
         let totalPoundsNeeded: Int = totalPoundsNeeded(fish: fish)
