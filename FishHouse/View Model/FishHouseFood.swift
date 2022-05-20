@@ -69,137 +69,42 @@ class FishHouseFood: ObservableObject {
             }
         }
     
-    func findFoodRequest(name: String, request: String) -> Int {
+    //Find the food queried in the string
+    func findFood(name: String, location: ParkLocation) -> Int {
             
-        for food in foods  {
-            if food.name == name {
-                return food.amount
-            }
-        }
-        
-        return 0
-        
-    }
-    
-    func findExtraWeight(fish: String) -> Int {
-        for request in requests {
-            if request.name.contains("extra") && request.name.contains(fish) {
-                return request.amount
-            }
-        }
-        
-        return 0
-    }
-    
-    func findExtraWeightInBoxes(boxWeight: Int) -> Int {
-        for request in requests {
-            if request.name.contains("extra") {
-                return request.amount / boxWeight
-            }
-        }
-        
-        return 0
-    }
-    
-    func returnMissingHerringRequest(name: String) -> String {
-        
-        if name.contains("pac") {
-            
-            if name.contains("point") {
-                return "Request for pacific herring at dolphin point:"
+        for food in foods
+        {
+            //Food has been found
+            if food.name == name
+            {
+                //Find which location, return amount attached to location
+                switch location
+                {
+                case .show:
+                    return food.show
+                case .point:
+                    return food.point
+                case .pinn:
+                    return food.pinn
+                case .otter:
+                    return food.otter
+                case .whale:
+                    return food.whale
+                case .aquariums:
+                    return food.aquariums
+                case .rescue:
+                    return food.rescue
+                case .wild:
+                    return food.wild
+                    
+                default:
+                    print("findFood could not find location")
+                    return 0
+                    
+                }
             }
             
-            else if name.contains("show") {
-                return "Request for pacific herring at dolphin show: "
-            }
-            
-            else if name.contains("pinn") {
-                return "Request for pacific herring at pinniped: "
-            }
-            
-            else if name.contains("whale") {
-                return "Request for pacific herring at orca: "
-            }
-            
-            else if name.contains("aq") {
-                return "Request for pacific herring for aquariums: "
-            }
-            
-            else if name.contains("rescue") {
-                return "Request for pacific herring for rescue: "
-            }
-            
-            else {
-                return "Request for pacific herring at wild arctic: "
-            }
-        }
-        
-        else if name.contains("atl") {
-            
-            if name.contains("point") {
-                return "Request for atlantic herring at dolphin point:"
-            }
-            
-            else if name.contains("show") {
-                return "Request for atlantic herring at dolphin show: "
-            }
-            
-            else if name.contains("pinn") {
-                return "Request for atlantic herring at pinniped: "
-            }
-            
-            else if name.contains("whale") {
-                return "Request for atlantic herring at orca: "
-            }
-            
-            else if name.contains("aq") {
-                return "Request for atlantic herring for aquariums: "
-            }
-            
-            else if name.contains("rescue") {
-                return "Request for atlantic herring for rescue: "
-            }
-            
-            else {
-                return "Request for atlantic herring at wild arctic: "
-            }
-
-        }
-        
-        else if name.contains("large") {
-            
-            if name.contains("point") {
-                return "Request for large round herring at dolphin point:"
-            }
-            
-            else if name.contains("show") {
-                return "Request for large round herring at dolphin show: "
-            }
-            
-            else if name.contains("pinn") {
-                return "Request for large round herring at pinniped: "
-            }
-            
-            else if name.contains("whale") {
-                return "Request for large round herring at orca: "
-            }
-            
-            else if name.contains("aq") {
-                return "Request for large round herring for aquariums: "
-            }
-            
-            else if name.contains("rescue") {
-                return "Request for large round herring for rescue: "
-            }
-            
-            else {
-                return "Request for large round herring at wild arctic: "
-            }
-
-        }
-        
-        else {
-            return "Could not location or fish"
+            print("Could not find fish")
         }
         
     }
