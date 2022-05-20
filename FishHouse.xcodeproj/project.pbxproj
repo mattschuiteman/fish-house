@@ -93,6 +93,7 @@
 		25C5BD1427812ECA00E28DA8 /* ShrimpStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5BD1327812ECA00E28DA8 /* ShrimpStack.swift */; };
 		25C5BD162781301500E28DA8 /* SalmonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5BD152781301500E28DA8 /* SalmonStack.swift */; };
 		25C7549D2836F1290011351F /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C7549C2836F1290011351F /* Food.swift */; };
+		25C7549F28371D170011351F /* FishHouseFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C7549E28371D170011351F /* FishHouseFood.swift */; };
 		25CECECC27922B7600E8387F /* FishHouseAdd-Ons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CECECB27922B7600E8387F /* FishHouseAdd-Ons.swift */; };
 		25CECECE27922BB700E8387F /* Add-On.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CECECD27922BB700E8387F /* Add-On.swift */; };
 		25CECED5279250DB00E8387F /* AddOnMotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CECED4279250DB00E8387F /* AddOnMotherView.swift */; };
@@ -198,6 +199,7 @@
 		25C5BD1327812ECA00E28DA8 /* ShrimpStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrimpStack.swift; sourceTree = "<group>"; };
 		25C5BD152781301500E28DA8 /* SalmonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStack.swift; sourceTree = "<group>"; };
 		25C7549C2836F1290011351F /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		25C7549E28371D170011351F /* FishHouseFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishHouseFood.swift; sourceTree = "<group>"; };
 		25CECECB27922B7600E8387F /* FishHouseAdd-Ons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FishHouseAdd-Ons.swift"; sourceTree = "<group>"; };
 		25CECECD27922BB700E8387F /* Add-On.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Add-On.swift"; sourceTree = "<group>"; };
 		25CECED4279250DB00E8387F /* AddOnMotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnMotherView.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				25068A68276C21AF0058DAE1 /* FishHouseRequests.swift */,
 				25879719278E7D8B00B7EBFF /* FishHouseWeights.swift */,
 				25CECECB27922B7600E8387F /* FishHouseAdd-Ons.swift */,
+				25C7549E28371D170011351F /* FishHouseFood.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				25C5BD162781301500E28DA8 /* SalmonStack.swift in Sources */,
 				2587971A278E7D8B00B7EBFF /* FishHouseWeights.swift in Sources */,
 				2582FB65273EC0BA00E3E6EE /* SideTitleView.swift in Sources */,
+				25C7549F28371D170011351F /* FishHouseFood.swift in Sources */,
 				25ABD71F27B82D16009759C8 /* Whale_Side_Title_View.swift in Sources */,
 				25068A63276C1D350058DAE1 /* Color.swift in Sources */,
 				257DAA5B2787C80700610FC9 /* DoubleWeightOfBoxes.swift in Sources */,
