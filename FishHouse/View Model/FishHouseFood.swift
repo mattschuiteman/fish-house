@@ -109,28 +109,133 @@ class FishHouseFood: ObservableObject {
         
     }
     
-    func updateData(requestToUpdateID: String, updatedAmount: Int)
+    func updateData(foodID: String, location: ParkLocation, updatedAmount: Int)
     {
         let db = Firestore.firestore()
         
-        // We search for specific document that matches our query and ONLY change the amount, not the name or ID
-        db.collection("requests").document(requestToUpdateID).setData(["amount": updatedAmount], merge: true) {error in
-            
-            //Check for error
-            //If error is nil, succesful! Get the new data
-            
-            if error == nil {
-            
-                self.getData()
-                
-            }
-            
-            else {
-                print("Failed to update data")
-            }
-            
-            
-        }
+        let documentToUpdate = db.collection("fish").document(foodID).collection("requests")
+        
+       switch location
+        {
+       case .show:
+           documentToUpdate.document("show").setData(["amount": updatedAmount], merge: true)
+           {
+               error in
+               
+               if error == nil {
+                   self.getData()
+               }
+           
+               else {
+                   print("Failed to update data")
+               }
+               
+           }
+       case .point:
+           documentToUpdate.document("point").setData(["amount": updatedAmount], merge: true)
+           {
+               error in
+               
+               if error == nil {
+                   self.getData()
+               }
+           
+               else {
+                   print("Failed to update data")
+               }
+               
+           }
+       case .pinn:
+           documentToUpdate.document("pinn").setData(["amount": updatedAmount], merge: true)
+           {
+               error in
+               
+               if error == nil {
+                   self.getData()
+               }
+           
+               else {
+                   print("Failed to update data")
+               }
+               
+           }
+       case .otter:
+           documentToUpdate.document("otter").setData(["amount": updatedAmount], merge: true)
+           {
+               error in
+               
+               if error == nil {
+                   self.getData()
+               }
+           
+               else {
+                   print("Failed to update data")
+               }
+               
+           }
+           
+       case .whale:
+           documentToUpdate.document("whale").setData(["amount": updatedAmount], merge: true)
+           {
+               error in
+               
+               if error == nil {
+                   self.getData()
+               }
+           
+               else {
+                   print("Failed to update data")
+               }
+               
+           }
+           
+       case .aquariums:
+           documentToUpdate.document("aquariums").setData(["amount": updatedAmount], merge: true)
+           {
+               error in
+               
+               if error == nil {
+                   self.getData()
+               }
+           
+               else {
+                   print("Failed to update data")
+               }
+               
+           }
+           
+       case .rescue:
+           documentToUpdate.document("rescue").setData(["amount": updatedAmount], merge: true)
+           {
+               error in
+               
+               if error == nil {
+                   self.getData()
+               }
+           
+               else {
+                   print("Failed to update data")
+               }
+               
+           }
+           
+       case .wild:
+           documentToUpdate.document("wild").setData(["amount": updatedAmount], merge: true)
+           {
+               error in
+               
+               if error == nil {
+                   self.getData()
+               }
+           
+               else {
+                   print("Failed to update data")
+               }
+               
+           }
+           
+       }
+        
     }
     
     func totalPoundsNeeded(fish: String) -> Int {
