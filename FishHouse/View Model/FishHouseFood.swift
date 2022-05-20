@@ -8,9 +8,9 @@
 import Foundation
 import Firebase
 
-class FishHouseRequests: ObservableObject {
+class FishHouseFood: ObservableObject {
     
-    @Published var requests = [Request]()
+    @Published var foods = [Food]()
     
     init() {
         getData()
@@ -23,7 +23,7 @@ class FishHouseRequests: ObservableObject {
             let db = Firestore.firestore()
             
             // Read the documents at a specific path
-            db.collection("requests").getDocuments { snapshot, error in
+            db.collection("foods").getDocuments { snapshot, error in
                 
                 // Check for errors
                 if error == nil {
@@ -35,12 +35,24 @@ class FishHouseRequests: ObservableObject {
                         DispatchQueue.main.async {
                             
                             // Get all the documents and create Requests
-                            self.requests = snapshot.documents.map { d in
+                            self.foods = snapshot.documents.map { d in
                                 
-                                // Create a Request item for each document returned
-                                return Request(id: d.documentID,
+                                // Create a Food item for each document returned
+                                return Food(id: d.documentID,
                                             name: d["name"] as? String ?? "",
-                                            amount: d["amount"] as? Int ?? 50)
+                                            abbrev: d["abbrev"] as? String ?? "",
+                                            box_weight: d["box_weight"] as? Int ?? 50,
+                                            add_on: d["add_on"] as? Bool ?? false,
+                                            show: d["requests/show/amount"] as? Int ?? 50,
+                                            point: d["requests/point/amount"] as? Int ?? 50,
+                                            pinn: d["requests/pinn/amount"] as? Int ?? 50,
+                                            otter: d["requests/otter/amount"] as? Int ?? 50,
+                                            whale: d["requests/whale/amount"] as? Int ?? 50,
+                                            aquariums: d["requests/aquariums/amount"] as? Int ?? 50,
+                                            rescue: d["requests/rescue/amount"] as? Int ?? 50,
+                                            wild: d["requests/wild/amount"] as? Int ?? 50
+                                        
+                                )
                             }
                         }
                         
@@ -57,11 +69,11 @@ class FishHouseRequests: ObservableObject {
             }
         }
     
-    func findWeight(name: String) -> Int {
+    func findFoodRequest(name: String, request: String) -> Int {
             
-        for request in requests {
-            if request.name == name {
-                return request.amount
+        for food in foods  {
+            if food.name == name {
+                return food.amount
             }
         }
         

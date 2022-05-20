@@ -11,6 +11,8 @@ struct Food: Identifiable
 {
     //Unique name to identify the food
     let id: String
+    //Let this be identical to name for developer's sake, may not be the savviest way of doing this
+    let name: String
     // Abbreviation for user convienence, instead of saying "Pacfic Herring" say "PAC"
     let abbrev: String
     // Weight of the box that the fish comes in, needed for breakout calculation
@@ -19,7 +21,7 @@ struct Food: Identifiable
     var add_on: Bool
     // -- Requests --
     // Amount that show requests
-    var show_amount: Int
+    var show: Int
     //Amount that dolphin point requests
     var point: Int
     //Etc...
