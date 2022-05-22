@@ -255,10 +255,10 @@ class FishHouseFood: ObservableObject {
         return totalPoundsNeeded
     }
     
-    func totalPoundsBrokeout(fish: Food, boxWeight: Int, addOn: Bool) -> Int {
+    func totalPoundsBrokeout(food: Food) -> Int {
         
         // Get total pounds needed, will use this reference to determine how much needs to be brokeout
-        let totalPoundsNeeded: Int = totalPoundsNeeded(fish: fish)
+        let totalPoundsNeeded: Int = totalPoundsNeededFor(food: food)
         
         //Init variable
         var totalPoundsBrokeout: Int = 0
@@ -268,16 +268,16 @@ class FishHouseFood: ObservableObject {
         while (totalPoundsBrokeout <= totalPoundsNeeded) {
             
             //We check to see if the totalPoundsBrokeout + the boxWeight / 2 is greater than or equal to the totalPoundsNeeded, if so, end the loop
-            if (totalPoundsBrokeout + boxWeight / 2 >= totalPoundsNeeded) {
+            if (totalPoundsBrokeout + food.box_weight / 2 >= totalPoundsNeeded) {
                 break
             }
             //Add the box to breakout
-            totalPoundsBrokeout += boxWeight
+            totalPoundsBrokeout += food.box_weight
         }
         
         //Check if we manually add on box, you never know lol
-        if (addOn) {
-            totalPoundsBrokeout += boxWeight
+        if (food.add_on) {
+            totalPoundsBrokeout += food.box_weight
         }
         
         return totalPoundsBrokeout
