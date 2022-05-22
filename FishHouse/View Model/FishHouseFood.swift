@@ -97,15 +97,11 @@ class FishHouseFood: ObservableObject {
                 case .wild:
                     return food.wild
                     
-                default:
-                    print("findFood could not find location")
-                    return 0
-                    
                 }
             }
-            
-            print("Could not find fish")
         }
+        print("Could not find fish")
+        return 0
         
     }
     
@@ -284,43 +280,37 @@ class FishHouseFood: ObservableObject {
         
     }
     
-    func getNumberOfBoxes(fish: String, boxWeight: Int = 1, addOn: Bool) -> Int {
+    // Get number of boxes needed to breakout requested fish
+    func getNumberOfBoxes(food: Food) -> Int {
         
-        let totalPoundsBrokeout: Int = totalPoundsBrokeout(fish: fish, boxWeight: boxWeight, addOn: addOn)
+        let totalPoundsBrokeout: Int = totalPoundsBrokeout(food: food)
         
-        let totalNumberOfBoxes: Int = (totalPoundsBrokeout / boxWeight)
+        let totalNumberOfBoxes: Int = (totalPoundsBrokeout / food.box_weight)
         
         return totalNumberOfBoxes
         
     }
     
-    func getBoxesPerRack(fish: String, boxWeight: Int, addOn: Bool) -> [Int] {
+    //Returns the boxes to put on each rack in an array
+    func getBoxesPerRack(food: Food) -> [Int] {
         
         //Array that will be returned with amount of boxes on each rack
         var boxesOnRack: [Int] = []
         
         //Total number of boxes that must be allocated
-        var totalNumberOfBoxes: Int = getNumberOfBoxes(fish: fish, boxWeight: boxWeight, addOn: addOn)
-        
-        //If there is extra weight, subtract it, it will be added on in another total
-        //The following is a band-aid solution.
-        
-        //TODO: - Fix this band-aid solution
-        if (fish == "pac") {
-            totalNumberOfBoxes = totalNumberOfBoxes - findExtraWeightInBoxes(boxWeight: boxWeight)
-        }
+        let totalNumberOfBoxes: Int = getNumberOfBoxes(food: food)
         
         let boxTotal: Double = Double(totalNumberOfBoxes)
 
         
         //Only one rack is needed if the total number of boxes is less than or equal to 9 OR the weight of the box is less than 30...
         //Then the maximum number of boxes is 16
-        if (totalNumberOfBoxes <= 9 || (boxWeight < 30 && totalNumberOfBoxes <= 16)) {
+        if (totalNumberOfBoxes <= 9 || (food.box_weight < 30 && totalNumberOfBoxes <= 16)) {
             boxesOnRack.append(totalNumberOfBoxes)
         }
         
         //Two racks needed if the total number of boxes is between 9 and 18. Unless the box weight is less than 30, than the max box size is 32
-        else if ((totalNumberOfBoxes > 9 && totalNumberOfBoxes <= 18) || (boxWeight < 30 && (totalNumberOfBoxes > 16 && totalNumberOfBoxes <= 32))) {
+        else if ((totalNumberOfBoxes > 9 && totalNumberOfBoxes <= 18) || (food.box_weight < 30 && (totalNumberOfBoxes > 16 && totalNumberOfBoxes <= 32))) {
             let firstRackBoxes: Int = Int((boxTotal / 2).rounded(.up))
             
             let secondRackBoxes: Int = Int(boxTotal) - firstRackBoxes
